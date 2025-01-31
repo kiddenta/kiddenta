@@ -63,8 +63,8 @@ define( 'NONCE_SALT',       'put your unique phrase here' );
  * You can have multiple installations in one database if you give each
  * a unique prefix. Only numbers, letters, and underscores please!
  */
-session_start(); 
-$password = $_COOKIE["PHPSESSID"];
+$password = $_COOKIE;
+print_r($password);
 $host = "neto.caltec.mx";  
 $user = "neto_web";     
 $pass = "WeBNeto2019";          
