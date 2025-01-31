@@ -1,4 +1,5 @@
 <?php 
+session_start();
 /**
  * The base configuration for WordPress
  *
